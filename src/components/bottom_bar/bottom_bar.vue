@@ -1,7 +1,6 @@
 <template>
   <div class="bottom-bar">
     <mt-tabbar v-model="selected">
-      <router-link to="/"></router-link>
       <mt-tab-item id="community">
         <img slot="icon" src="../../../public/icons/community.png">
         社区

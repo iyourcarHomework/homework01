@@ -11,6 +11,13 @@ const routes = [
       require(['../components/HelloWorld.vue'], resolve);
     }
   },
+  {
+    path: '/editPage',
+    name: 'editPage',
+    component: (resolve) => {
+      require(['../views/edit_page/edit_page.vue'], resolve);
+    }
+  },
 ]
 
 const router = new VueRouter({
