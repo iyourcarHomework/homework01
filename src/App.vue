@@ -1,28 +1,51 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <community v-if="currentBar === 'community'"></community>
+    <my-class v-if="currentBar === 'class'"></my-class>
+    <study v-if="currentBar === 'study'"></study>
+    <home v-if="currentBar === 'home'"></home>
+    <bottom-bar @bottomChange="navBarChange"></bottom-bar>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from "./components/HelloWorld.vue";
+import bottomBar from "./components/bottom_bar/bottom_bar.vue";
+import community from "./views/community/community.vue";
+import myClass from "./views/myClass/myClass.vue";
+import study from "./views/study/study.vue";
+import home from "./views/home/home.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    HelloWorld,
+    bottomBar,
+    community,
+    myClass,
+    study,
+    home
+  },
+  data() {
+    return {
+      currentBar: "community"
+    };
+  },
+  methods: {
+    navBarChange(barName) {
+      this.currentBar = barName;
+    }
   }
-}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: -8px;
 }
 </style>
