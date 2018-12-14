@@ -2,9 +2,11 @@
 <template>
   <div>
     <div class="community-box">
-      <mt-header title="我的"></mt-header>
+      <mt-header title="我的">
+        <mt-button icon="back" slot="left" @click="() => {this.ifRegister = !this.ifRegister}" v-show="!ifRegister"></mt-button>
+      </mt-header>
       <!-- 登录 -->
-      <div class="login-box" v-if="ifRegister">
+      <div class="login-box" v-if="!logined && ifRegister">
         <mt-navbar v-model="selected">
           <mt-tab-item id="face">人脸登录</mt-tab-item>
           <mt-tab-item id="phone">手机登录</mt-tab-item>
@@ -41,7 +43,7 @@
         </mt-tab-container>
       </div>
       <!-- 注册 -->
-      <div class="register-box" v-else>
+      <div class="register-box" v-if="!logined && !ifRegister">
         <div class="phone-login">
           <mt-field
             label="用户名"
@@ -86,6 +88,10 @@
           >注册</mt-button>
         </div>
       </div>
+      <!-- 登陆后的个人信息 -->
+      <div class="info" v-if="logined">
+
+      </div>
     </div>
   </div>
 </template>
@@ -97,6 +103,7 @@ export default {
       active: "phone-login",
       selected: "phone",
       ifRegister: true,
+      logined: true,
       loginInfo: {
         name: "",
         pwd: ""
