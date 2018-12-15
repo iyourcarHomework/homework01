@@ -1,7 +1,7 @@
 <template>
   <div class="edit-box">
     <mt-header title="编辑发表">
-      <mt-button icon="back" slot="left" @click="back"></mt-button>
+      <mt-button icon="back" slot="left" @click.stop="back"></mt-button>
     </mt-header>
     <!-- 发表 -->
     <div class="publish">

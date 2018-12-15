@@ -3,7 +3,12 @@
   <div>
     <div class="community-box">
       <mt-header title="我的">
-        <mt-button icon="back" slot="left" @click="() => {this.ifRegister = !this.ifRegister}" v-show="!ifRegister"></mt-button>
+        <mt-button
+          icon="back"
+          slot="left"
+          @click="() => {this.ifRegister = !this.ifRegister}"
+          v-show="!ifRegister"
+        ></mt-button>
       </mt-header>
       <!-- 登录 -->
       <div class="login-box" v-if="!logined && ifRegister">
@@ -89,8 +94,43 @@
         </div>
       </div>
       <!-- 登陆后的个人信息 -->
-      <div class="info" v-if="logined">
-
+      <div class="inf-box" v-if="logined">
+        <!-- 个人信息 -->
+        <div class="info">
+          <!-- 头像 -->
+          <img class="info-photo" src="../../../public/icons/user.png" @click="() => {this.ifShowUpdate = !this.ifShowUpdate}">
+          <div class="info-name">{{userInfo.name || 'myName'}}</div>
+          <div class="info-sign">{{userInfo.sign || '这是我的个性签名这是我的个性签名这是我的个性签名这是我的个性签名'}}</div>
+        </div>
+        <!-- 编辑个人信息 -->
+        <div class="edit-info" v-if="ifShowUpdate">
+          <mt-field
+            label="用户名"
+            style="border-bottom:1px solid #EAEAEA;"
+            placeholder="用户名"
+            v-model="updateInfo.name"
+          ></mt-field>
+          <mt-field
+            label="密码"
+            style="border-bottom:1px solid #EAEAEA;;"
+            placeholder="密码"
+            type="password"
+            v-model="updateInfo.pwd"
+          ></mt-field>
+          <mt-field
+            label="签名"
+            style="border-bottom:1px solid #EAEAEA;;"
+            placeholder="签名"
+            type="password"
+            v-model="updateInfo.sign"
+          ></mt-field>
+          <mt-button
+            size="large"
+            type="primary"
+            style="width: 100%;margin: 10px auto;"
+            @click="updateUserInfo"
+          >更新用户信息</mt-button>
+        </div>
       </div>
     </div>
   </div>
@@ -100,19 +140,34 @@
 export default {
   data() {
     return {
-      active: "phone-login",
-      selected: "phone",
-      ifRegister: true,
-      logined: true,
+      active: "phone-login", // 切换电话登录
+      selected: "phone", // 登录tab栏切换
+      ifRegister: true, // 是否注册
+      logined: true, // 是否已经登录
+      ifShowUpdate: false, // 是否显示编辑更新信息
       loginInfo: {
+        // 登录信息
         name: "",
         pwd: ""
       },
       registerInfo: {
+        // 注册信息
         username: "",
         phone: "",
         ensurePwd: "",
         verificationCode: ""
+      },
+      userInfo: {
+        // 用户信息
+        photo: "",
+        name: "",
+        sign: ""
+      },
+      updateInfo: {
+        // 更新编辑的信息
+        name: "",
+        pwd: "",
+        sign: ""
       }
     };
   },
@@ -129,6 +184,9 @@ export default {
   methods: {
     register() {
       this.ifRegister = !this.ifRegister;
+    },
+    updateUserInfo(){
+
     }
   }
 };
@@ -154,5 +212,35 @@ export default {
   font-size: 14px;
   text-align: right;
   color: silver;
+}
+.info {
+  width: 98%;
+  height: 200px;
+  box-shadow: 0 0 2px rgba(8, 200, 214, 0.1);
+  border-radius: 4px;
+  margin: 10px auto;
+  text-align: center;
+  padding-bottom: 20px;
+  &-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+  }
+  &-name {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  &-sign {
+    width: 80%;
+    height: 20px;
+    margin: 10px auto;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 </style>

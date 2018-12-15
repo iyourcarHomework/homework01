@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      currentBar: "home"
+      currentBar: "study"
     };
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <div class="bottom-bar">
-    <mt-tabbar v-model="selected">
+    <mt-tabbar v-model="selected" style="position: fixed; bottom: 0;left: 0;">
       <mt-tab-item id="community">
         <img slot="icon" src="../../../public/icons/community.png">
         社区
@@ -25,7 +25,7 @@
 export default {
   data() {
     return {
-      selected: "home"
+      selected: "study"
     };
   },
   watch: {
@@ -37,5 +37,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
