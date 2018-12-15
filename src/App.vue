@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      currentBar: "study"
+      currentBar: "community"
     };
   },
   methods: {
