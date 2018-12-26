@@ -5,6 +5,7 @@
     <div class="community-box" v-if="!ifEdit">
       <!-- 顶部 -->
       <mt-header title="社区" style="position: fixed;top: 0; width: 100%;z-index: 9999;">
+      <!--发布内容入口 -->
         <mt-button icon="more" slot="right" @click="toggleEdit"></mt-button>
       </mt-header>
       <!-- 搜索框 -->
@@ -71,7 +72,7 @@ export default {
       detailContent: {}, // 详细内容
       contentList: [
         {
-          author: "Ersul", // 发表者
+          author: "Ioyes", // 发表者
           content:
             "emmmmm，这是我发表的内容，23333333333333333，这是什么系统。。。a", // 发表的内容
           commentCount: 9, // 评论数

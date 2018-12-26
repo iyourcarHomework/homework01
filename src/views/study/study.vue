@@ -15,12 +15,20 @@
 </template>
 
 <script>
+import { post } from './js/api';
 export default {
   data() {
     return {
       studyResources: [
         {
-          name: "C语言课件"
+          this.http.post('domain/study',{
+            name:'title'
+          }).then(function(response)){
+            console.log(response);
+          }.catch(function(error){
+            console.log(error);
+          });
+         
         },
         {
           name: "java课件"
@@ -84,7 +92,7 @@ export default {
   },
   methods: {
     /**
-     * 瞎子啊学习资料
+     * 学习资料
      */
     downLoadStudyResource() {}
   }
